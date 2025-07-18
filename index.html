@@ -137,6 +137,11 @@
             margin-bottom: 1rem;
         }
 
+        .about-card h4 {
+            color: #00ffff;
+            margin-bottom: 1rem;
+        }
+
         .contact-info {
             display: flex;
             flex-wrap: wrap;
@@ -278,6 +283,8 @@
             padding: 3rem;
             border-radius: 20px;
             margin-top: 3rem;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .social-project h3 {
@@ -292,6 +299,117 @@
             font-weight: bold;
             text-align: center;
             margin-top: 2rem;
+        }
+
+        /* Galería WIX */
+        .wix-gallery {
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .wix-gallery h4 {
+            color: #00ff00;
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            text-shadow: 0 0 15px #00ff00;
+        }
+
+        .wix-gallery h4 i {
+            margin-right: 0.5rem;
+        }
+
+        .wix-images {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+            width: 100%;
+        }
+
+        .wix-image-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: fadeInUp 0.6s ease-out;
+            min-height: 350px;
+        }
+
+        .wix-image-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 255, 255, 0.3);
+        }
+
+        .wix-image-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .wix-image-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .wix-product-info {
+            padding: 1.5rem;
+        }
+
+        .wix-image-card h5 {
+            color: #00ffff;
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            font-weight: bold;
+            text-shadow: 0 0 10px #00ffff;
+        }
+
+        .wix-image-card p {
+            color: #cccccc;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .wix-capacity {
+            font-size: 1.3rem;
+            color: #00ff00;
+            font-weight: bold;
+            margin: 1rem 0;
+            text-shadow: 0 0 10px #00ff00;
+        }
+
+        .wix-btn {
+            background: linear-gradient(45deg, #00ff00, #00ffff);
+            color: #000;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .wix-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 255, 255, 0.5);
+        }
+
+        .wix-image-placeholder {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(45deg, rgba(0, 255, 255, 0.2), rgba(0, 255, 0, 0.2));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #00ff00;
+            font-size: 2rem;
+            border-radius: 10px 10px 0 0;
         }
 
         /* Audio Control */
@@ -329,6 +447,11 @@
             .section-title {
                 font-size: 2rem;
             }
+            
+            .products-grid, .wix-images {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
         }
 
         /* Animations */
@@ -337,16 +460,30 @@
             50% { transform: translateY(-10px); }
         }
 
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         .product-showcase {
             animation: float 3s ease-in-out infinite;
+        }
+
+        .product-card, .wix-image-card {
+            animation: fadeInUp 0.6s ease-out;
         }
     </style>
 </head>
 <body>
-    <audio id="bgMusic" loop>
-    <source src="LostHighway.mp3" type="audio/mpeg">
-</audio>
-
+    <audio id="bgMusic" loop controls>     
+        <source src="AndSoItBegins.mp3" type="audio/mpeg"> 
+    </audio>
     <header>
         <nav class="container">
             <div class="logo">PILX</div>
@@ -443,7 +580,7 @@
                 <div class="product-card">
                     <img src="Wix.jpg" alt="WIX Láser Purificador" />
                     <div class="product-info">
-                        <h3>WIX Láser Purificador de Agua</h3>
+                        <h3>PIT Láser Purificador de Agua</h3>
                         <p>Sistema compacto que purifica agua eliminando contaminantes y patógenos con láser de baja energía, sin filtros desechables ni químicos.</p>
                         <div class="product-price">2,499 IsilCoins</div>
                         <button class="btn">Comprar Ahora</button>
@@ -471,7 +608,7 @@
                 </div>
 
                 <div class="product-card">
-                    <img src="Infinite Laser grow.jpg" alt="Pencil Infinite Laser Grow" />
+                    <img src="Infinite Laser grow.jpg" alt="Infinite Laser Grow" />
                     <div class="product-info">
                         <h3>Infinite Laser Grow</h3>
                         <p>Sistema láser para agricultura urbana sostenible que estimula el crecimiento de plantas y purifica el agua para riego.</p>
@@ -539,7 +676,7 @@
                             <div class="stars">★★★★★</div>
                         </div>
                     </div>
-                    <p>"El WIX Purificador de Agua es fantástico. Agua limpia sin filtros desechables, perfecto para nuestro hogar eco-friendly."</p>
+                    <p>"El PIT Purificador de Agua es fantástico. Agua limpia sin filtros desechables, perfecto para nuestro hogar eco-friendly."</p>
                 </div>
 
                 <div class="review-card">
@@ -572,7 +709,7 @@
                             <div class="stars">★★★★★</div>
                         </div>
                     </div>
-                    <p>"Mi huerto urbano prospera gracias al Pencil Infinite Laser Grow. Las plantas crecen más rápido y saludables."</p>
+                    <p>"Mi huerto urbano prospera gracias al Infinite Laser Grow. Las plantas crecen más rápido y saludables."</p>
                 </div>
 
                 <div class="review-card">
@@ -619,6 +756,40 @@
                     </div>
                 </div>
                 
+                <!-- Galería de imágenes WIX -->
+                <div class="wix-gallery">
+                    <h4><i class="fas fa-images"></i> Sistemas WIX Láser Purificador</h4>
+                    <div class="wix-images">
+                        <div class="wix-image-card">
+                            <img src="3.png" alt="WIX Pequeño">
+                            <div class="wix-product-info">
+                                <h5>WIX Pequeño</h5>
+                                <p>Ideal para hogares pequeños y uso personal. Tecnología láser avanzada con energía solar.</p>
+                                <div class="wix-capacity">Capacidad: 50L/día</div>
+                                <button class="wix-btn">Ver Detalles</button>
+                            </div>
+                        </div>
+                        <div class="wix-image-card">
+                            <img src="2.png" alt="WIX Mediano">
+                            <div class="wix-product-info">
+                                <h5>WIX Mediano</h5>
+                                <p>Perfecto para familias medianas. Mayor capacidad de purificación continua.</p>
+                                <div class="wix-capacity">Capacidad: 150L/día</div>
+                                <button class="wix-btn">Ver Detalles</button>
+                            </div>
+                        </div>
+                        <div class="wix-image-card">
+                            <img src="1.png" alt="WIX Grande">
+                            <div class="wix-product-info">
+                                <h5>WIX Grande</h5>
+                                <p>Diseñado para uso comunitario. Máxima capacidad de purificación.</p>
+                                <div class="wix-capacity">Capacidad: 500L/día</div>
+                                <button class="wix-btn">Ver Detalles</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
                 <div class="investment-amount">
                     <i class="fas fa-coins"></i> Inversión Total: 200,000 IsilCoins
                 </div>
@@ -657,9 +828,14 @@
             });
         });
 
-        // Add floating animation to product cards
+        // Add floating animation to product cards and WIX cards
         const productCards = document.querySelectorAll('.product-card');
         productCards.forEach((card, index) => {
+            card.style.animationDelay = `${index * 0.1}s`;
+        });
+
+        const wixCards = document.querySelectorAll('.wix-image-card');
+        wixCards.forEach((card, index) => {
             card.style.animationDelay = `${index * 0.1}s`;
         });
     </script>
