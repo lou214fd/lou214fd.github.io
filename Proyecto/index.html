@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PILX - Revolucionando la Escritura Sostenible</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+            color: #ffffff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(0, 0, 0, 0.9);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #00ffff;
+            text-shadow: 0 0 20px #00ffff;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #00ffff;
+            text-shadow: 0 0 10px #00ffff;
+        }
+
+        /* Sections */
+        .section {
+            padding: 100px 0;
+            min-height: 100vh;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            color: #00ffff;
+            text-shadow: 0 0 20px #00ffff;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: radial-gradient(circle at center, rgba(0, 255, 255, 0.1) 0%, transparent 70%);
+            text-align: center;
+            padding: 150px 0;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            color: #00ffff;
+            text-shadow: 0 0 30px #00ffff;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: #cccccc;
+        }
+
+        .product-showcase {
+            margin: 3rem 0;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .product-showcase img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 255, 255, 0.3);
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .about-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+        }
+
+        .about-card h3 {
+            color: #00ffff;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .contact-item i {
+            color: #00ffff;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            color: #00ffff;
+            font-size: 2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .social-links a:hover {
+            transform: scale(1.2);
+            text-shadow: 0 0 20px #00ffff;
+        }
+
+        /* Products Section */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .product-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 255, 255, 0.3);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-info h3 {
+            color: #00ffff;
+            margin-bottom: 1rem;
+        }
+
+        .product-price {
+            font-size: 1.5rem;
+            color: #00ff00;
+            font-weight: bold;
+            margin: 1rem 0;
+        }
+
+        .btn {
+            background: linear-gradient(45deg, #00ffff, #0080ff);
+            color: #000;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 255, 255, 0.5);
+        }
+
+        /* Reviews Section */
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .review-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+        }
+
+        .review-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .review-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .review-info h4 {
+            color: #00ffff;
+        }
+
+        .stars {
+            color: #ffd700;
+            margin: 0.5rem 0;
+        }
+
+        /* Social Project Section */
+        .social-project {
+            background: rgba(0, 100, 0, 0.2);
+            padding: 3rem;
+            border-radius: 20px;
+            margin-top: 3rem;
+        }
+
+        .social-project h3 {
+            color: #00ff00;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .investment-amount {
+            font-size: 2rem;
+            color: #00ff00;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        /* Audio Control */
+        .audio-control {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0, 255, 255, 0.2);
+            border: 1px solid #00ffff;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+        }
+
+        .audio-control i {
+            color: #00ffff;
+            font-size: 1.5rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .product-showcase {
+            animation: float 3s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+    <audio id="bgMusic" loop>
+    <source src="LostHighway.mp3" type="audio/mpeg">
+</audio>
+
+    <header>
+        <nav class="container">
+            <div class="logo">PILX</div>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#productos">Productos</a></li>
+                <li><a href="#reseñas">Reseñas</a></li>
+                <li><a href="#proyecto">Proyecto Social</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- SECCIÓN 1: INICIO -->
+    <section id="inicio" class="section hero">
+        <div class="container">
+            <h1>PILX</h1>
+            <p class="hero-subtitle">Revolucionando la Escritura Sostenible</p>
+            
+            <div class="product-showcase">
+                <img src="Pencil Infinite Laser x.jpg" alt="Pencil Infinite Laser X" />
+                <h2>PENCIL INFINITE LASER X</h2>
+                <p>El lapicero revolucionario que transforma la escritura con tinta regenerativa y tecnología láser</p>
+            </div>
+
+            <div class="about-grid">
+                <div class="about-card">
+                    <h3><i class="fas fa-users"></i> ¿Quiénes Somos?</h3>
+                    <p>PILX es el negocio innovador detrás del PENCIL INFINITE LASER X, un lapicero revolucionario que transforma la escritura para estudiantes, artistas e ingenieros. Con tinta de nanomateriales que se regenera mediante un proceso químico activado por láser y una función de borrado sin dañar el papel, elimina recambios y borradores desechables.</p>
+                </div>
+                
+                <div class="about-card">
+                    <h3><i class="fas fa-rocket"></i> Misión</h3>
+                    <p>Revolucionar la escritura con una herramienta eco-amigable que usa tinta regenerativa de nanomateriales y tecnología láser para crear y corregir sin generar residuos, empoderando a estudiantes, artistas e ingenieros mientras protegemos el medio ambiente con materiales reciclados y diseños innovadores.</p>
+                </div>
+                
+                <div class="about-card">
+                    <h3><i class="fas fa-eye"></i> Visión</h3>
+                    <p>Ser líderes globales en tecnologías sostenibles, transformando la escritura en una experiencia ecológica y creativa, y llevando nuestra tecnología láser a nuevos horizontes para resolver problemas mundiales, inspirando un futuro donde la innovación y la sostenibilidad se entrelazan.</p>
+                </div>
+                
+                <div class="about-card">
+                    <h3><i class="fas fa-map-marker-alt"></i> Contacto</h3>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Av. Innovación 2547, San Isidro, Lima, Perú</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+51 1 234-5678</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-mobile-alt"></i>
+                            <span>+51 987-654-321</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" title="TikTok"><i class="fab fa-tiktok"></i></a>
+                        <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="#" title="Facebook"><i class="fab fa-facebook"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN 2: PRODUCTOS Y SERVICIOS -->
+    <section id="productos" class="section">
+        <div class="container">
+            <h2 class="section-title">Galería de Productos y Servicios</h2>
+            
+            <div class="products-grid">
+                <div class="product-card">
+                    <img src="Pencil Infinite Laser x.jpg" alt="Pencil Infinite Laser X" />
+                    <div class="product-info">
+                        <h3>Pencil Infinite Laser X</h3>
+                        <p>Lapicero revolucionario con tinta regenerativa de nanomateriales y tecnología láser para crear y corregir sin generar residuos.</p>
+                        <div class="product-price">899 IsilCoins</div>
+                        <button class="btn">Comprar Ahora</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="Pencil Infinite Laser Color.jpg" alt="Pencil Infinite Laser Color" />
+                    <div class="product-info">
+                        <h3>Pencil Infinite Laser Color</h3>
+                        <p>Dispositivo portátil que utiliza tecnología láser para pintar y diseñar con colores vibrantes y precisos, empleando pigmentos ecológicos activados por láser.</p>
+                        <div class="product-price">1,299 IsilCoins</div>
+                        <button class="btn">Comprar Ahora</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="Wix.jpg" alt="WIX Láser Purificador" />
+                    <div class="product-info">
+                        <h3>WIX Láser Purificador de Agua</h3>
+                        <p>Sistema compacto que purifica agua eliminando contaminantes y patógenos con láser de baja energía, sin filtros desechables ni químicos.</p>
+                        <div class="product-price">2,499 IsilCoins</div>
+                        <button class="btn">Comprar Ahora</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="Pencil Infinite Laser Sketch.jpg" alt="Pencil Infinite Laser Sketch" />
+                    <div class="product-info">
+                        <h3>Pencil Infinite Laser Sketch</h3>
+                        <p>Dispositivo portátil para artistas que combina tecnología láser con impresión 3D, permitiendo crear bocetos físicos o digitales modificables sin residuos.</p>
+                        <div class="product-price">1,799 IsilCoins</div>
+                        <button class="btn">Comprar Ahora</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="Pencil Infinite Laser Clean.jpg" alt="Pencil Infinite Laser Clean" />
+                    <div class="product-info">
+                        <h3>Pencil Infinite Laser Clean</h3>
+                        <p>Dispositivo láser portátil para limpieza sostenible, elimina suciedad, óxido o contaminantes sin usar químicos agresivos ni generar desechos.</p>
+                        <div class="product-price">1,599 IsilCoins</div>
+                        <button class="btn">Comprar Ahora</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="Infinite Laser grow.jpg" alt="Pencil Infinite Laser Grow" />
+                    <div class="product-info">
+                        <h3>Infinite Laser Grow</h3>
+                        <p>Sistema láser para agricultura urbana sostenible que estimula el crecimiento de plantas y purifica el agua para riego.</p>
+                        <div class="product-price">3,299 IsilCoins</div>
+                        <button class="btn">Comprar Ahora</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="Accesorios.jpg" alt="Accesorios PILX" />
+                    <div class="product-info">
+                        <h3>Accesorios PILX</h3>
+                        <p>Fundas protectoras y carcasas de diferentes colores para personalizar tus dispositivos PILX.</p>
+                        <div class="product-price">99 - 299 IsilCoins</div>
+                        <button class="btn">Comprar Ahora</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="Pilx servicio premium.jpg" alt="Servicio Premium PILX" />
+                    <div class="product-info">
+                        <h3>Suscripción Premium PILX</h3>
+                        <p>Acceso exclusivo a productos nuevos antes que nadie y atención personalizada 24/7 para cualquier producto PILX.</p>
+                        <div class="product-price">499 IsilCoins/mes</div>
+                        <button class="btn">Suscribirse</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN 3: RESEÑAS -->
+    <section id="reseñas" class="section">
+        <div class="container">
+            <h2 class="section-title">Reseñas de Clientes</h2>
+            
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="review-header">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face" alt="Cliente" class="review-avatar" />
+                        <div class="review-info">
+                            <h4>Carlos Mendoza</h4>
+                            <div class="stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p>"El Pencil Infinite Laser X cambió completamente mi experiencia de escritura. Como estudiante de ingeniería, ya no me preocupo por quedarse sin tinta. ¡Increíble tecnología!"</p>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-header">
+                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&h=100&fit=crop&crop=face" alt="Cliente" class="review-avatar" />
+                        <div class="review-info">
+                            <h4>Ana Flores</h4>
+                            <div class="stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p>"Como artista, el Pencil Infinite Laser Color me ha abierto un mundo de posibilidades creativas. Los colores son vibrantes y la precisión es impresionante."</p>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-header">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face" alt="Cliente" class="review-avatar" />
+                        <div class="review-info">
+                            <h4>Miguel Torres</h4>
+                            <div class="stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p>"El WIX Purificador de Agua es fantástico. Agua limpia sin filtros desechables, perfecto para nuestro hogar eco-friendly."</p>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-header">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face" alt="Cliente" class="review-avatar" />
+                        <div class="review-info">
+                            <h4>Laura Vega</h4>
+                            <div class="stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p>"El Pencil Infinite Laser Sketch revolucionó mi trabajo como diseñadora. Puedo crear y modificar diseños sin desperdiciar materiales."</p>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-header">
+                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop&crop=face" alt="Cliente" class="review-avatar" />
+                        <div class="review-info">
+                            <h4>Roberto Silva</h4>
+                            <div class="stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p>"El Pencil Infinite Laser Clean es perfecto para restaurar muebles antiguos. Limpieza profunda sin químicos dañinos."</p>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-header">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop&crop=face" alt="Cliente" class="review-avatar" />
+                        <div class="review-info">
+                            <h4>Sofia Ramos</h4>
+                            <div class="stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p>"Mi huerto urbano prospera gracias al Pencil Infinite Laser Grow. Las plantas crecen más rápido y saludables."</p>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-header">
+                        <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=100&h=100&fit=crop&crop=face" alt="Cliente" class="review-avatar" />
+                        <div class="review-info">
+                            <h4>Diego Herrera</h4>
+                            <div class="stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p>"La suscripción Premium vale cada IsilCoin. Acceso temprano a productos y atención excepcional 24/7."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN 4: PROYECTO SOCIAL -->
+    <section id="proyecto" class="section">
+        <div class="container">
+            <h2 class="section-title">Proyecto Social que Apoyamos</h2>
+            
+            <div class="social-project">
+                <h3><i class="fas fa-heart"></i> Quishuar Renace</h3>
+                
+                <div class="about-grid">
+                    <div class="about-card">
+                        <h4><i class="fas fa-exclamation-triangle"></i> Problemática</h4>
+                        <p>La comunidad de Quishuar Corral en Cajamarca enfrenta una grave crisis hídrica caracterizada por la escasez y contaminación del agua, que compromete la salud y calidad de vida de sus habitantes. Esta problemática se origina por múltiples causas: una intensa sequía que reduce el caudal de fuentes naturales como el río Grande y el manantial local; el impacto de la actividad minera de Yanacocha, que afecta las cabeceras de cuenca y contamina el canal Quishuar con químicos no aptos para consumo humano; las explosiones diarias de la mina, que posiblemente disminuyen el flujo de manantiales; y la falta de infraestructura adecuada para el tratamiento y distribución de agua, lo que agrava la dependencia de recursos hídricos contaminados o casi agotados.</p>
+                    </div>
+                    
+                    <div class="about-card">
+                        <h4><i class="fas fa-map-marker-alt"></i> Ubicación</h4>
+                        <p>Comunidad de Quishuar Corral, Provincia de Cajamarca, Región Cajamarca, Perú</p>
+                    </div>
+                    
+                    <div class="about-card">
+                        <h4><i class="fas fa-lightbulb"></i> Nuestra Solución</h4>
+                        <p>A través del proyecto "Quishuar Renace", implementamos sistemas WIX Láser Purificador de Agua en la comunidad, proporcionando acceso a agua limpia y segura sin dependencia de filtros desechables o químicos contaminantes. Nuestros dispositivos utilizan tecnología láser sostenible alimentada por energía solar, perfecta para zonas rurales.</p>
+                    </div>
+                    
+                    <div class="about-card">
+                        <h4><i class="fas fa-users"></i> Beneficiarios</h4>
+                        <p>Más de 500 familias de la comunidad de Quishuar Corral tienen acceso a agua potable limpia y segura, mejorando significativamente su calidad de vida y salud.</p>
+                    </div>
+                </div>
+                
+                <div class="investment-amount">
+                    <i class="fas fa-coins"></i> Inversión Total: 200,000 IsilCoins
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="audio-control" onclick="toggleMusic()">
+        <i class="fas fa-music" id="musicIcon"></i>
+    </div>
+
+    <script>
+        let musicPlaying = false;
+        const bgMusic = document.getElementById('bgMusic');
+        const musicIcon = document.getElementById('musicIcon');
+
+        function toggleMusic() {
+            if (musicPlaying) {
+                bgMusic.pause();
+                musicIcon.className = 'fas fa-music';
+                musicPlaying = false;
+            } else {
+                bgMusic.play();
+                musicIcon.className = 'fas fa-pause';
+                musicPlaying = true;
+            }
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add floating animation to product cards
+        const productCards = document.querySelectorAll('.product-card');
+        productCards.forEach((card, index) => {
+            card.style.animationDelay = `${index * 0.1}s`;
+        });
+    </script>
+</body>
+</html>
